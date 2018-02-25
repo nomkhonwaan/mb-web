@@ -1,0 +1,6 @@
+.app {
+  > .header {
+    height: 6.4rem;
+    background: red;
+  }
+}
