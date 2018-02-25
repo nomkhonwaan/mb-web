@@ -3,10 +3,20 @@
  */
 import * as React from 'react';
 
+/** 
+ * Internal Dependencies
+ */
+import Header from './header';
+import Footer from './footer';
+
 const App = () => {
   return (
     <div className="app">
-      Hello, world!
+
+      <Header />
+
+      <Footer />
+
     </div>
   );
 };
