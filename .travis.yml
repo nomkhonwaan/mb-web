@@ -5,6 +5,9 @@ node_js:
 
 cache: yarn
 
+before_deploy:
+- yarn build
+
 deploy:
   provider: firebase
   on:
