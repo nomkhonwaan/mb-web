@@ -3,14 +3,19 @@ language: node_js
 node_js:
 - 9.6
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+  - node_modules
+  - $(yarn config get prefix)/bin/firebase
 
 before_deploy:
 - yarn build
 
 deploy:
+  skip_cleanup: true
   provider: firebase
-  on:
-    branch: master
+  # on:
+  #   branch: master
   token:
     secure: Bj8dyBzUbnYVaBzzqiI40Z3xHLUbjfbJFUXWGZLbXrqTIGYTKjFJBqIedZFlu3CF4ICKCZ+glv0IKEbXyj6FdwUOZ5TIx/PeYJdTQgm68/7HoFPK4HF+XNr8KqNm2viITKmPi5YfpDnU0obqBVo5oghgGSkWwFVAUkS3EV/J+mQFTzGwa1ifSJZU2y/3OERkFv6ZT74dNMy2SaJgMzoVP5SJ6m2T4HeeyB9o+K3POTPzF8gcE/CAqxZqH+LvYTRbBp79T26qQKYEkozJLp8qWq2IKzPQ+ltBP5cV4Bg1KKT/UsQsPWQRHs8udQ9oKAS19wlkMoEW7j82UzfE5+NgTXnJCNBMaK85Ma/j4EQe587DIb/qASj0jxn6GgrnkblD0NCKQse/5bpew1NE1uHw+q3OyNithvUAKf1bUcFJuT3F1dIhKVHDVidLheFbdYv0sJDTDvh7zGe3C6ODr00lZe19YzS9/A2tg149v40XCqb82tfPh4vWu7cyzVIHpVcXc2L0wtLT86acIsZB1vpbFYrln5uWIl14+9OK7jfMj6GU4Bj7LNHgBSquHmqt8vzO6dIKaKu0HYYoET5VVpUU0/2w1N0oNRGHFPN1tYbeiuZ3dIBPdq2Z+gjs44tV9CRRLOfH4dyVJdGJu+elr06JgcVTEIXWXT14Q4Hn7fdSoyg=
