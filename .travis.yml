@@ -12,6 +12,9 @@ cache:
 before_deploy:
 - yarn build
 
+before_deploy:
+- yarn build
+
 deploy:
   skip_cleanup: true
   provider: firebase
