@@ -10,14 +10,14 @@ import PropTypes from 'prop-types';
  */
 import { toggleSidebar } from '../redux/modules/app';
 
-const Header = () => {
+const Sidebar = () => {
   return (
-    <div className="app-header">
+    <div className="app-sidebar">
     </div>
   );
 };
 
-Header.propTypes = {
+Sidebar.propTypes = {
   toggleSidebar: PropTypes.func.isRequired
 };
 
@@ -29,5 +29,4 @@ export default connect(
     };
   },
   { toggleSidebar }
-)(Header);
-
+)(Sidebar);
