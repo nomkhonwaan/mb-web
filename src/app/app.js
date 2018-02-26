@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import * as React from 'react';
+import { renderRoutes } from 'react-router-config';
 
 /** 
  * Internal Dependencies
@@ -9,6 +10,7 @@ import * as React from 'react';
 import Header from './header';
 import Footer from './footer';
 import Sidebar from './sidebar';
+import routes from '../routes';
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
       <Header />
 
       <Sidebar />
+
+      { renderRoutes(routes) }
 
       <Footer />
 
