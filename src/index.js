@@ -4,7 +4,8 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 /**
  * Internal Dependencies
@@ -14,16 +15,16 @@ import App from './app';
 import configureStore from './redux/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = configureStore();
+const history = createHistory();
+
+const store = configureStore(history);
 
 ReactDOM.render(
-  <BrowserRouter>
-  
-    <Provider store={ store }>
+  <Provider store={ store }>
+    <ConnectedRouter history={ history }>
       <App />
-    </Provider>
-
-  </BrowserRouter>, 
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

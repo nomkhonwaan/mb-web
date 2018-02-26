@@ -1,7 +1,8 @@
 /**
  * External Dependencies
  */
-import { compose, createStore } from 'redux';
+import { compose, combineReducers, createStore, applyMiddleware } from 'redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 
 /** 
  * Internal Dependencies
@@ -11,10 +12,17 @@ import { rootReducer } from './modules/root';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function configureStore() {
+function configureStore(history) {
   const store = createStore(
-    rootReducer,
-    composeEnhancers()
+    combineReducers({
+      ...rootReducer,
+      router: routerReducer
+    }),
+    composeEnhancers(
+      applyMiddleware(
+        routerMiddleware(history)
+      )
+    )
   );
 
   return store;
