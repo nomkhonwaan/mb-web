@@ -10,11 +10,14 @@ import PropTypes from 'prop-types';
  */
 import { toggleSidebar } from '../redux/modules/app';
 
-const Header = (props) => {
+export const Header = (props) => {
   return (
     <div className="app-header">
       
-      <div className="sidebar-toggle">
+      <div
+        className="sidebar-toggle"
+        onClick={ props.toggleSidebar }
+      >
         <i className="fal fa-bars" />
       </div>
 
