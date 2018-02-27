@@ -7,15 +7,14 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 /** 
  * Internal Dependencies
  */
-import { rootReducer } from './modules/root';
-
+import app from './modules/app';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 function configureStore(history) {
   const store = createStore(
     combineReducers({
-      ...rootReducer,
+      app,
       router: routerReducer
     }),
     composeEnhancers(

@@ -10,21 +10,37 @@ import PropTypes from 'prop-types';
  */
 import { toggleSidebar } from '../redux/modules/app';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="app-header">
+      
+      <div className="sidebar-toggle">
+        <i className="fal fa-bars" />
+      </div>
+
+      <div className="search-box">
+        <i className="fal fa-search" />
+      </div>
+
     </div>
   );
 };
 
 Header.propTypes = {
+  app: PropTypes.shape({
+    sidebar: PropTypes.shape({
+      collapsed: PropTypes.bool.isRequired
+    }).isRequired
+  }).isRequired,
   toggleSidebar: PropTypes.func.isRequired
 };
 
 export default connect(
   (state, ownProps) => {
     return {
-      ...state.app,
+      app: { 
+        ...state.app
+      },
       ...ownProps
     };
   },
