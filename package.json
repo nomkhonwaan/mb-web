@@ -26,10 +26,13 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=./config/bootstrap.js",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "node-sass-chokidar": "^0.0.3"
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "node-sass-chokidar": "^0.0.3",
+    "sinon": "^4.4.2"
   }
 }
