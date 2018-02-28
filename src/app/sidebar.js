@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
  */
 import { toggleSidebar } from '../redux/modules/app';
 
-const Sidebar = (props) => {
+export const Sidebar = (props) => {
   return (
     <div className="app-sidebar">
 
