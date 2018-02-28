@@ -8,6 +8,11 @@ cache: yarn
 before_deploy:
 - yarn build
 
+notifications:
+  email:
+    recipients:
+    - me@nomkhonwaan.com
+
 deploy:
   skip_cleanup: true
   provider: firebase
