@@ -1,12 +1,30 @@
+@keyframes app-overlay-fadein {
+  from { opacity: 0; }
+  to { opacity:  .16; }
+}
+
 .app {
   display: grid;
   grid-template-columns: 25.6rem auto;
   transform: translateX(-25.6rem);
   transition: .4s transform ease-in-out;
+  position: relative;
   width: calc(100% + 25.6rem);
 
   &.-sidebar-expanded {
     transform: translateX(0);
+  }
+
+  &.-sidebar-expanded:before {
+    animation: app-overlay-fade-in .4s ease-in-out;
+    background: #333;
+    bottom: 0;
+    content: '';
+    left: 25.6rem;
+    opacity: .16;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -42,7 +60,6 @@
 }
 
 .app-sidebar {
-  border-right: .1rem solid #ececec;
   grid-column: 1/2;
   grid-row: 1/2;
   width: 25.6rem;
@@ -52,16 +69,25 @@
   }
 }
 
-.nav {
+.nav-item {
+  color: #333;
   font: normal 400 1.6rem 'Lato', sans-serif;
+  position: relative;
 
-  &.-sidebar {
-    margin-top: 6.4rem;
+  &.-vertical:first-child {
+    margin-top: 4rem;
   }
 
-  & > .item {
-    color: #333;
+  &.-vertical:last-child {
+    margin-bottom: 4rem;
   }
 
-  // &.-sidebar >
+  & > a {
+    display: inline-flex;
+    position: relative;
+  }
+
+  &.-vertical > a {
+    padding: 2.4rem 3.2rem;    
+  }
 }
