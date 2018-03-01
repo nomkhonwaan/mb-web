@@ -2,7 +2,10 @@
  * External Dependencies
  */
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 /** 
  * Internal Dependencies
@@ -11,12 +14,17 @@ import Header from './header';
 import Footer from './footer';
 import Sidebar from './sidebar';
 import routes from '../routes';
+import PopupOverlay from './popup-overlay';
 
-const App = () => {
+export const App = (props) => {
   return (
-    <div className="app">
+    <div className={ classnames('app', {
+      '-sidebar-expanded': !props.app.sidebar.collapsed
+    }) }>
 
       <Header />
+    
+      <PopupOverlay isIn={ !props.app.sidebar.collapsed } />
 
       <Sidebar />
 
@@ -28,4 +36,19 @@ const App = () => {
   );
 };
 
-export default App;
+App.propTypes = {
+  app: PropTypes.shape({
+    sidebar: PropTypes.shape({
+      collapsed: PropTypes.bool.isRequired
+    }).isRequired
+  }).isRequired
+}
+
+export default connect(
+  (state, ownProps) => {
+    return {
+      app: state.app,
+      ...ownProps
+    }
+  }
+)(App);

@@ -1,26 +1,114 @@
+@keyframes popup-overlay-fade-in {
+  from { opacity: 0; }
+  to { opacity: .16; }
+}
+
+@keyframes popup-overlay-fade-out {
+  from { opacity: .16; }
+  to { opacity: 0; }
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 25.6rem auto;
+  transform: translateX(-25.6rem);
+  transition: .4s transform ease-in-out;
+  position: relative;
+  width: calc(100% + 25.6rem);
+
+  &.-sidebar-expanded {
+    transform: translateX(0);
+  }
+}
+
 .app-header {
   background: #fff;
   border-bottom: .1rem solid #ececec;
-  display: flex;
+  grid-column: 2/3;
   height: 6.4rem;
 }
 
-.sidebar-toggle,
-.search-box {
-  align-items: center;
+.popup-overlay {
+  background: #333;
   cursor: pointer;
-  display: flex;
+  height: 100%;
+  left: 26.5rem;
+  position: absolute;
+  transform: translateX(0) translateY(0);
+  width: calc(100% - 25.6rem);
+
+  &.-entering {
+    animation: popup-overlay-fade-in .4s ease-in-out;
+    opacity: .16; 
+  }
+
+  &.-entered {
+    opacity: .16;
+  }
+
+  &.-exiting {
+    animation: popup-overlay-fade-out .2s ease-in-out;
+    opacity: 0;
+  }
+
+  &.-exited {
+    opacity: 0;
+  }
+}
+
+.sidebar-toggle {
+  color: #808080;  
+  cursor: pointer;
   height: 6.4rem;
-  line-height: 6.4rem;
   padding: 0 3.2rem;
 
-  > .fa-bars,
-  > .fa-search {
-    color: #808080;
+  > *[class*="fa-"] {
     font-size: 2.2rem;
+  }
+
+  &.-small > *[class*="fa-"] {
+    font-size: 1.6rem;
+  }
+
+  > .close {
+    margin-right: 1.6rem;
+    font: normal 400 1.3rem 'Lato', sans-serif;
   }
 }
 
 .search-box {
-  margin-left: auto;
+  @extend .sidebar-toggle;
+}
+
+.app-sidebar {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 25.6rem;
+
+  > .header {
+    @extend .app-header;
+  }
+}
+
+.nav-item {
+  color: #333;
+  font: normal 400 1.6rem 'Lato', sans-serif;
+  position: relative;
+
+  &.-vertical:first-child {
+    margin-top: 4rem;
+  }
+
+  &.-vertical:last-child {
+    margin-bottom: 4rem;
+  }
+
+  & > a {
+    display: inline-flex;
+    position: relative;
+  }
+
+  &.-vertical > a {
+    padding: 2.4rem 3.2rem;    
+  }
 }

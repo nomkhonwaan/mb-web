@@ -5,8 +5,13 @@ node_js:
 
 cache: yarn
 
-before_deploy:
+before_script:
 - yarn build
+
+notifications:
+  email:
+    recipients:
+    - me@nomkhonwaan.com
 
 deploy:
   skip_cleanup: true

@@ -12,16 +12,16 @@ import { toggleSidebar } from '../redux/modules/app';
 
 export const Header = (props) => {
   return (
-    <div className="app-header">
+    <div className="app-header _flex">
       
       <div
-        className="sidebar-toggle"
+        className="sidebar-toggle _flex _flex-vertical-align-middle "
         onClick={ props.toggleSidebar }
       >
         <i className="fal fa-bars" />
       </div>
 
-      <div className="search-box">
+      <div className="search-box _flex _flex-vertical-align-middle _flex-right">
         <i className="fal fa-search" />
       </div>
 
