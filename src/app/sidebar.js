@@ -27,52 +27,52 @@ export const Sidebar = (props) => {
 
       </div>
 
-      <nav className="nav">
+      <nav className="nav -sidebar">
         {/* TODO: loop through all nav's items instead of hard coding */}
         <ul className="_list-unstyled _unpadding">
           <li className="item">
-            <Link to="/" className="_text-undecorated">
+            <Link to="/" className="_color-inherit _text-undecorated">
               <span>Home</span>
             </Link>
           </li>
           <li className="item">
-            <Link to="/login" className="_text-undecorated">
+            <Link to="/login" className="_color-inherit _text-undecorated">
               <span>Login / Register</span>
             </Link> 
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/web-development" className="_text-undecorated">
+            <Link to="/categories/web-development" className="_color-inherit _text-undecorated">
               <span>Web Development</span>
             </Link>
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/web-design" className="_text-undecorated">
+            <Link to="/categories/web-design" className="_color-inherit _text-undecorated">
               <span>Web Design</span>
             </Link>
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/programming" className="_text-undecorated">
+            <Link to="/categories/programming" className="_color-inherit _text-undecorated">
               <span>Programming</span>
             </Link>
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/devops" className="_text-undecorated">
+            <Link to="/categories/devops" className="_color-inherit _text-undecorated">
               <span>DevOps</span>
             </Link>
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/life-style" className="_text-undecorated">
+            <Link to="/categories/life-style" className="_color-inherit _text-undecorated">
               <span>Life Style</span>
             </Link>
           </li>
           {/* TODO: replace this item with actual category */}
           <li className="item">
-            <Link to="/categories/how-i-made-this-website" className="_text-undecorated">
+            <Link to="/categories/how-i-made-this-website" className="_color-inherit _text-undecorated">
               <span>How I made this website</span>
             </Link>
           </li>

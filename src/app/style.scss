@@ -42,6 +42,7 @@
 }
 
 .app-sidebar {
+  border-right: .1rem solid #ececec;
   grid-column: 1/2;
   grid-row: 1/2;
   width: 25.6rem;
@@ -49,4 +50,18 @@
   > .header {
     @extend .app-header;
   }
+}
+
+.nav {
+  font: normal 400 1.6rem 'Lato', sans-serif;
+
+  &.-sidebar {
+    margin-top: 6.4rem;
+  }
+
+  & > .item {
+    color: #333;
+  }
+
+  // &.-sidebar >
 }
