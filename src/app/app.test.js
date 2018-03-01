@@ -20,19 +20,21 @@ describe('app', () => {
           />
         );
 
-        expect(wrapper.find('.-sidebar-expanded').length).toEqual(1);
+        expect(wrapper.find('.-sidebar-expanded')).toHaveLength(1);
+        expect(wrapper.find({ isIn: true })).toHaveLength(1);
       });
     });
-
+    
     describe('When the Sidebar is collasped', () => {
       it('should remove class `-sidebar-expanded` from the component', () => {
         const wrapper = shallow(
           <App
-            app={ { sidebar: { collapsed: true } } }
+          app={ { sidebar: { collapsed: true } } }
           />
         );
-
-        expect(wrapper.find('.-sidebar-expanded').length).toEqual(0);
+        
+        expect(wrapper.find('.-sidebar-expanded')).toHaveLength(0);
+        expect(wrapper.find({ isIn: false })).toHaveLength(1);
       });
     });
   });
