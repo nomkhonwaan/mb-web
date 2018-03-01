@@ -14,6 +14,7 @@ import Header from './header';
 import Footer from './footer';
 import Sidebar from './sidebar';
 import routes from '../routes';
+import PopupOverlay from './popup-overlay';
 
 export const App = (props) => {
   return (
@@ -22,6 +23,8 @@ export const App = (props) => {
     }) }>
 
       <Header />
+    
+      <PopupOverlay isIn={ !props.app.sidebar.collapsed } />
 
       <Sidebar />
 

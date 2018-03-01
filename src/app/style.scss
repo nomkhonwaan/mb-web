@@ -1,6 +1,11 @@
-@keyframes app-overlay-fadein {
+@keyframes popup-overlay-fade-in {
   from { opacity: 0; }
-  to { opacity:  .16; }
+  to { opacity: .16; }
+}
+
+@keyframes popup-overlay-fade-out {
+  from { opacity: .16; }
+  to { opacity: 0; }
 }
 
 .app {
@@ -14,18 +19,6 @@
   &.-sidebar-expanded {
     transform: translateX(0);
   }
-
-  &.-sidebar-expanded:before {
-    animation: app-overlay-fade-in .4s ease-in-out;
-    background: #333;
-    bottom: 0;
-    content: '';
-    left: 25.6rem;
-    opacity: .16;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
 }
 
 .app-header {
@@ -33,6 +26,34 @@
   border-bottom: .1rem solid #ececec;
   grid-column: 2/3;
   height: 6.4rem;
+}
+
+.popup-overlay {
+  background: #333;
+  cursor: pointer;
+  height: 100%;
+  left: 26.5rem;
+  position: absolute;
+  transform: translateX(0) translateY(0);
+  width: calc(100% - 25.6rem);
+
+  &.-entering {
+    animation: popup-overlay-fade-in .4s ease-in-out;
+    opacity: .16; 
+  }
+
+  &.-entered {
+    opacity: .16;
+  }
+
+  &.-exiting {
+    animation: popup-overlay-fade-out .2s ease-in-out;
+    opacity: 0;
+  }
+
+  &.-exited {
+    opacity: 0;
+  }
 }
 
 .sidebar-toggle {
