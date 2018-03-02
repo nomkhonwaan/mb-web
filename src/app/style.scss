@@ -10,7 +10,7 @@
 
 .app {
   display: grid;
-  grid-template-columns: 25.6rem auto;
+  grid-template-columns: 25.6rem 1fr;
   transform: translateX(-25.6rem);
   transition: .4s transform ease-in-out;
   position: relative;
