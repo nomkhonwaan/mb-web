@@ -10,7 +10,7 @@
 
 .app {
   display: grid;
-  grid-template-columns: 25.6rem auto;
+  grid-template-columns: 25.6rem 1fr;
   transform: translateX(-25.6rem);
   transition: .4s transform ease-in-out;
   position: relative;
@@ -32,9 +32,8 @@
   background: #333;
   cursor: pointer;
   height: 100%;
-  left: 26.5rem;
   position: absolute;
-  transform: translateX(0) translateY(0);
+  transform: translateX(25.6rem) translateY(0);
   width: calc(100% - 25.6rem);
 
   &.-entering {
