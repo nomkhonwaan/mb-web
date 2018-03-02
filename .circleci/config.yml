@@ -67,7 +67,7 @@ jobs:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
         - v1-dependencies-
-    - run: yarn firebase use production --token=$FIREBASE_DEPLOY_TOKEN_STAGING
+    - run: yarn firebase use staging --token=$FIREBASE_DEPLOY_TOKEN_STAGING
     - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_STAGING
   deploy_to_development:
     docker:
