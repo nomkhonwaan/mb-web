@@ -43,21 +43,19 @@ export const Sidebar = (props) => {
         {/* TODO: all nav's items will be actual categories */}
         <ul className="_list-unstyled _unpadding">
           {
-            items.map(({ link, name }, key) => {
-              return (
-                <li 
-                  className={ classnames('nav-item -vertical', {
-                    '-selected': props.router.location.pathname === link
-                  }) }
-                  key={ key }
-                  onClick={ props.toggleSidebar }
-                >
-                  <Link to={ link } className="_color-inherit _text-undecorated">
-                    <span>{ name }</span>
-                  </Link>
-                </li>
-              );
-            })
+            items.map(({ link, name }, key) => (
+              <li 
+                className={ classnames('nav-item -vertical', {
+                  '-selected': props.router.location.pathname === link
+                }) }
+                key={ key }
+                onClick={ props.toggleSidebar }
+              >
+                <Link to={ link } className="_color-inherit _text-undecorated">
+                  <span>{ name }</span>
+                </Link>
+              </li>
+            ))
           }
         </ul>
       </nav>
