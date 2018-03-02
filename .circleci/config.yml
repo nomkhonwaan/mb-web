@@ -55,21 +55,20 @@ jobs:
         - v1-dependencies-
     - run: yarn firebase use production --token=$FIREBASE_DEPLOY_TOKEN_PRODUCTION
     - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_PRODUCTION
-  # deploy_to_staging:
-  #   docker:
-  #   - image: circleci/node:9.6
-  #   working_directory: ~/repo
-  #   steps:
-  #   - attach_workspace:
-  #       at: ~/repo
-  #   - restore_cache:
-  #     keys:
-  #     - v1-dependencies-{{ checksum "package.json" }}
-  #     - v1-dependencies-
-  #   - run: |
-  #       if [[ `git branch` ]]
-  #   - run: yarn firebase use staging
-  #   - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_STAGING
+  deploy_to_staging:
+    docker:
+    - image: circleci/node:9.6
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - attach_workspace:
+        at: ~/repo
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        - v1-dependencies-
+    - run: yarn firebase use production --token=$FIREBASE_DEPLOY_TOKEN_STAGING
+    - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_STAGING
   deploy_to_development:
     docker:
     - image: circleci/node:9.6
@@ -97,15 +96,20 @@ workflows:
         - build
     - hold:
         type: approval
-        requires:
-        - test
         filters:
           branches:
             only:
             - master
     - deploy_to_production:
         requires:
+        - test
         - hold
+        filters:
+          branches:
+            only: master
+    - deploy_to_staging:
+        requires:
+        - test
         filters:
           branches:
             only: master
