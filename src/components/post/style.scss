@@ -1,0 +1,88 @@
+.post {
+  font: normal 400 1.6rem 'Lato', sans-serif;
+
+  & > footer {
+    display: grid;
+    grid-template-columns: 6.4rem auto auto;
+  }
+}
+
+.post-title {
+  color: #333;
+  font: normal 500 3.6rem 'Athiti', sans-serif;
+  margin: 6.4rem 0 .8rem;
+}
+
+.post-tag {
+  color: #0091ea;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-right: 1.6rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.post-article {
+  color: #333;
+  font: normal 300 1.6rem 'Pridi', sans-serif;
+  margin: 2.4rem 0;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  & > p {
+    margin-top: 2.4rem;
+  }
+
+  & > p > img {
+    margin: .8 0
+  }
+}
+
+.post-author-avatar {
+  grid-row: 1 / span 2;
+
+  & > a > img {
+    border-radius: 50%;
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+}
+
+.post-author-display-name {
+  grid-column: 2 / 3;
+  margin: 0 0 .8rem 1.6rem;
+}
+
+.post-published-at-and-categories {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  margin: .8rem 0 0 1.6rem;
+}
+
+.post-published-at {
+  color: #666;
+}
+
+.post-category {
+  color: #0091ea;
+}
+
+.post-comments {
+  color: #808080;
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+  font-size: 1.5rem;
+
+  > .fa-comments {
+    font-size: 2.2rem;
+    margin-right: .8rem;
+  }
+}
