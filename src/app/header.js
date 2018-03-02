@@ -12,7 +12,7 @@ import { toggleSidebar } from '../redux/modules/app';
 
 export const Header = (props) => {
   return (
-    <div className="app-header _flex">
+    <header className="app-header _flex">
       
       <div
         className="sidebar-toggle _flex _flex-vertical-align-middle "
@@ -25,7 +25,7 @@ export const Header = (props) => {
         <i className="fal fa-search" />
       </div>
 
-    </div>
+    </header>
   );
 };
 
