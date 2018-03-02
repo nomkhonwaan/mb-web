@@ -50,6 +50,7 @@ export const Sidebar = (props) => {
                     '-selected': props.router.location.pathname === link
                   }) }
                   key={ key }
+                  onClick={ props.toggleSidebar }
                 >
                   <Link to={ link } className="_color-inherit _text-undecorated">
                     <span>{ name }</span>

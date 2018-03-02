@@ -28,6 +28,24 @@ describe('app-sidebar', () => {
         expect(toggleSidebar.calledOnce).toBe(true);
       });
     });
+
+    describe('When user click on the nav-item', () => {
+      it('should navigate to the target page and call `toggleSidebar` function', () => {
+        const toggleSidebar = spy();
+        const wrapper = shallow(
+          <Sidebar
+            router={ { location: { pathname: '/' } } }
+            toggleSidebar={ toggleSidebar }
+          />
+        );
+
+        const navItem1 = wrapper.find('.nav-item').first();
+        
+        navItem1.simulate('click');
+
+        expect(toggleSidebar.calledOnce).toBe(true);
+      });
+    });
   });
 
 });
