@@ -87,19 +87,16 @@ workflows:
   build_test_and_deploy:
     jobs:
     - install
-    - build_css:
+    - build:
         requires:
         - install
     - test:
         requires: 
-        - build_css
-    - build_js:
-        requires:
-        - test
+        - build
     - hold:
         type: approval
         requires:
-        - build_js
+        - test
         filters:
           branches:
             only:
@@ -112,7 +109,7 @@ workflows:
             only: master
     - deploy_to_development:
         requires:
-        - build_js
+        - test
         filters:
           branches:
             ignore: master
