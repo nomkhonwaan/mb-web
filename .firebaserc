@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "nomkhonwaan-project"
+    "production": "nomkhonwaan-prod-project",
+    "staging": "nomkhonwaan-staging-project",
+    "development": "nomkhonwaan-dev-project"
   }
 }
