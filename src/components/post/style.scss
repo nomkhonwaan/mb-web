@@ -1,3 +1,5 @@
+@import '../../style.scss';
+
 .post {
   font: normal 400 1.6rem 'Lato', sans-serif;
 
@@ -9,8 +11,13 @@
 
 .post-title {
   color: #333;
-  font: normal 500 3.6rem 'Athiti', sans-serif;
-  margin: 6.4rem 0 .8rem;
+  font: normal 500 2.6rem 'Athiti', sans-serif;
+  margin: 4.8rem 0 .8rem;
+
+  @include lg {
+    font-size: 3.6rem;
+    margin-top: 6.4rem;
+  }
 }
 
 .post-tag {
@@ -42,7 +49,8 @@
   }
 
   & > p > img {
-    margin: .8 0
+    margin: .8 0;
+    max-width: 100%;
   }
 }
 

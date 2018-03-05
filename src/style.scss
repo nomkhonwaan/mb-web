@@ -104,6 +104,7 @@ html, body {
 ._uppercase { text-transform: uppercase!important; }
 
 ._narrow { 
+  padding: 0 3.2rem;
   width: 100%!important;
   
   @include lg {
@@ -112,7 +113,7 @@ html, body {
 }
 
 ._wide { 
-  width: 100%!important;
+  @extend ._narrow;
 
   @include lg {
     width: 102.4rem!important;
