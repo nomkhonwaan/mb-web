@@ -108,6 +108,7 @@ html, body {
   width: 100%!important;
   
   @include lg {
+    padding: 0;
     width: 76.8rem!important; 
   }
 }
@@ -116,6 +117,11 @@ html, body {
   @extend ._narrow;
 
   @include lg {
+    padding: 0 3.2rem;
     width: 102.4rem!important;
+  }
+
+  @include xl {
+    padding: 0;
   }
 }
