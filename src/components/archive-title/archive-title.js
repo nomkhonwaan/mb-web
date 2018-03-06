@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const ArchiveTitle = (props) => {
   return (
-    <div className="archive-title _unmargin">
+    <div className="archive-title">
       { props.children }
     </div>
   );

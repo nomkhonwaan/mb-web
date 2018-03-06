@@ -97,6 +97,8 @@ html, body {
 ._list-unstyled { list-style: none!important; }
 ._text-undecorated { text-decoration: none!important; }
 
+._no-outline:focus { outline: 0!important; }
+
 ._unmargin { margin: 0!important; }
 ._unpadding { padding: 0!important; }
 
