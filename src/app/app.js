@@ -10,10 +10,10 @@ import PropTypes from 'prop-types';
 /** 
  * Internal Dependencies
  */
+import routes from '../routes';
 import Header from './header';
 import Footer from './footer';
 import Sidebar from './sidebar';
-import routes from '../routes';
 import PopupOverlay from './popup-overlay';
 
 export const App = (props) => {
