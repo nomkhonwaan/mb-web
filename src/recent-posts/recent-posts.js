@@ -29,15 +29,6 @@ export const RecentPosts = (props) => {
         }
 
         <div className="_flex">
-          {
-            !props.recentPosts.pageInfo.hasPreviousPage ? null : (
-              <Button className="newer-posts-button">
-                <Link to="" className="_color-inherit _text-undecorated">
-                  Newer Posts
-                </Link>
-              </Button>
-            )
-          }
 
           {
             !props.recentPosts.pageInfo.hasNextPage ? null : (
@@ -48,6 +39,7 @@ export const RecentPosts = (props) => {
               </Button>
             )
           }
+          
         </div>
 
       </div>
