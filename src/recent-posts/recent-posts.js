@@ -1,19 +1,22 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
+import * as React  from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link }    from 'react-router-dom';
 
 /**
  * Internal Dependencies
  */
 import { ArchiveTitle, Button, Post } from '../components';
+import { documentTitle }              from '../utils';
 
 export const RecentPosts = (props) => {
   return (
     <div className="recent-posts _flex _flex-direction-column _flex-horizontal-align-center">
 
+      { documentTitle('Recent Posts') }
+      
       <div className="_narrow">
         <ArchiveTitle>
           Recent Posts
