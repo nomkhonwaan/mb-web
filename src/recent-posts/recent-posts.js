@@ -1,9 +1,10 @@
 /**
  * External Dependencies
  */
-import * as React  from 'react';
-import { connect } from 'react-redux';
-import { Link }    from 'react-router-dom';
+import * as React                     from 'react';
+import { connect }                    from 'react-redux';
+import { Link }                       from 'react-router-dom';
+import PropTypes                      from 'prop-types';
 
 /**
  * Internal Dependencies
@@ -23,7 +24,7 @@ export const RecentPosts = (props) => {
         </ArchiveTitle>
 
         {
-          props.recentPosts.map((item, key) => (
+          props.latestPublishedPosts.map((item, key) => (
             <Post
               { ...item }
               key={ key }
@@ -59,11 +60,45 @@ export const RecentPosts = (props) => {
   );
 };
 
+RecentPosts.propTypes = {
+  latestPublishedPosts: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string,
+      link: PropTypes.string,
+      status: PropTypes.string.isRequired,
+      html: PropTypes.string,
+      author: PropTypes.shape({
+        displayName: PropTypes.string.isRequired,
+        avatarUrl: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired
+      }).isRequired,
+      createdAt: PropTypes.string.isRequired,
+      updatedAt: PropTypes.string,
+      publishedAt: PropTypes.string,
+      tags: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          slug: PropTypes.string.isRequired,
+          link: PropTypes.string.isRequired
+        })
+      ),
+      categories: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          slug: PropTypes.string.isRequired,
+          link: PropTypes.string.isRequired
+        })
+      )
+    })
+  ).isRequired
+};
+
 export default connect(
   (state, ownProps) => {
     return {
       ...ownProps,
-      recentPosts: [
+      latestPublishedPosts: [
         {
           title: 'ไบโอวิลเลจอุตสาหการ เกจิบาบูนดีไซน์ ต้าอ่วยเจ็ต แอปเปิลสติกเกอร์สเตอริโอมินต์มาร์ก',
           slug: '',
@@ -73,6 +108,8 @@ export default connect(
           author: { 
             displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
           },
+          createdAt: '2017-12-25T00:00:00.000Z',
+          updatedAt: '2017-12-25T00:00:00.000Z',
           publishedAt: '2017-12-25T00:00:00.000Z',
           tags: [
             { name: 'Donec', slug: 'donec', link: '/tags/donec' },
@@ -98,6 +135,8 @@ export default connect(
           author: { 
             displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
           },
+          createdAt: '2017-12-25T00:00:00.000Z',
+          updatedAt: '2017-12-25T00:00:00.000Z',
           publishedAt: '2017-12-25T00:00:00.000Z',
           tags: [
             { name: 'Praesent', slug: 'praesent', link: '/tags/praesent' },
@@ -118,6 +157,8 @@ export default connect(
           author: { 
             displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
           },
+          createdAt: '2017-12-25T00:00:00.000Z',
+          updatedAt: '2017-12-25T00:00:00.000Z',
           publishedAt: '2017-12-25T00:00:00.000Z',
           tags: [
             { name: 'Lorem', slug: 'lorem', link: '/tags/lorem' },
@@ -137,6 +178,8 @@ export default connect(
           author: { 
             displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
           },
+          createdAt: '2017-12-25T00:00:00.000Z',
+          updatedAt: '2017-12-25T00:00:00.000Z',
           publishedAt: '2017-12-25T00:00:00.000Z',
           tags: [
             { name: 'Donec', slug: 'donec', link: '/tags/donec' },
@@ -162,6 +205,8 @@ export default connect(
           author: { 
             displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
           },
+          createdAt: '2017-12-25T00:00:00.000Z',
+          updatedAt: '2017-12-25T00:00:00.000Z',
           publishedAt: '2017-12-25T00:00:00.000Z',
           tags: [
             { name: 'Praesent', slug: 'praesent', link: '/tags/praesent' },
@@ -173,9 +218,7 @@ export default connect(
           ],
           comments: [ ]
         }
-      ],
-      webDevelopment: {},
-      lifeStyle: {}
+      ]
     }
   }
 )(RecentPosts);

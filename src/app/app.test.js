@@ -1,13 +1,13 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
+import * as React  from 'react';
 import { shallow } from 'enzyme';
 
 /**
  * Internal Dependencies
  */
-import { App } from './app';
+import { App }     from './app';
 
 describe('app', () => {
 

@@ -2,9 +2,9 @@
  * External Dependencies
  */
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import { Link }   from 'react-router-dom';
+import PropTypes  from 'prop-types';
+import moment     from 'moment';
 
 const Post = (props) => {
   return (
@@ -97,9 +97,26 @@ const Post = (props) => {
 Post.propTypes = {
   isSingle: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  slug: PropTypes.string,
+  link: PropTypes.string,
+  status: PropTypes.string.isRequired,
+  html: PropTypes.string,
+  author: PropTypes.shape({
+    displayName: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired
+  }).isRequired,
+  createdAt: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string,
+  publishedAt: PropTypes.string,
   tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired
+    })
+  ),
+  categories: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,

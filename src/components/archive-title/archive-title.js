@@ -2,7 +2,7 @@
  * External Dependencies
  */
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes  from 'prop-types';
 
 const ArchiveTitle = (props) => {
   return (
@@ -15,4 +15,5 @@ const ArchiveTitle = (props) => {
 ArchiveTitle.propTypes = {
   children: PropTypes.node.isRequired
 }
+
 export default ArchiveTitle;
