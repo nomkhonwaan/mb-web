@@ -79,7 +79,7 @@
   color: #666;
 }
 
-.post-category {
+.post-categories {
   color: #0091ea;
 }
 
@@ -87,6 +87,9 @@
   color: #808080;
   grid-column: 3 / 4;
   grid-row: 1 / span 2;
+}
+
+.comment {
   font-size: 1.5rem;
 
   > .fa-comments {

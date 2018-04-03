@@ -33,7 +33,8 @@ describe('recent-posts', () => {
           ],
           categories: [
             { name: 'Web Design', slug: 'web-design', link: '/categories/web-design-5a9a00cb6bcc2335131f9ca7' }
-          ]
+          ],
+          comments: []
         }
       ];
       const wrapper = shallow(

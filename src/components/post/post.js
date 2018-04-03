@@ -60,7 +60,7 @@ const Post = (props) => {
 
           &nbsp;on&nbsp;
 
-          <span className="post-category">
+          <span className="post-categories">
             {
               props.categories
                 .map((item, key) => (
@@ -81,7 +81,7 @@ const Post = (props) => {
         <div className="post-comments _flex _flex-vertical-align-middle _flex-horizontal-align-right">
           {
             !props.comments.length ? null : (
-              <div className="post-comments _flex _flex-vertical-align-middle">
+              <div className="comment _flex _flex-vertical-align-middle">
                 <i className="fal fa-comments" /> { props.comments.length }
               </div> 
             )
