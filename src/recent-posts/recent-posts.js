@@ -218,6 +218,45 @@ export default connect(
           ],
           comments: [ ]
         }
+      ],
+      latestUpdatedCategories: [
+        {
+          name: 'Web Development',
+          slug: 'web-development',
+          link: '/categories/web-development-5a9a00cb6bcc2335131f9ca7',
+          publishedPosts: [
+            {
+              title: 'เอสเพรสโซวาไรตี้',
+              slug: 'เอสเพรสโซวาไรตี้',
+              link: '/2017/12/25/เอสเพรสโซวาไรตี้',
+              status: 'PUBLISHED',
+              html: `<p>คาวบอย ป๋าจูเนียร์พ่อค้า ล็อตธุรกรรมบัตเตอร์โยโย่ไลน์ บูติคสปิริต โปรเจ็คท์ เอ็นเตอร์เทน หล่อฮังก้วยเด้อเกรย์ ฮัลโลวีนทริป มหภาคเพียว บุญคุณดีพาร์ทเมนต์ถ่ายทำไพลิน แอคทีฟเยอร์บีร่า ศิลปากรวอล์กไลฟ์ ตะหงิดเวิร์ก...</p>`,
+              author: { 
+                displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
+              },
+              createdAt: '2017-09-19T00:00:00.000Z',
+              publishedAt: '2017-09-19T00:00:00.000Z',
+              tags: [
+                { name: 'Condimentum', slug: 'condimentum', link: '/tags/condimentum' },
+              ],
+              categories: [
+                { name: 'Web Development', slug: 'web-development', link: '/categories/web-development-5a9a00cb6bcc2335131f9ca7' }
+              ],
+              comments: [
+                {}, {}, {}, {}, {},
+                {}, {}, {}, {}, {},
+                {}, {}, {}, {}, {},
+                {}, {}, {}, {}, {}
+              ]
+            }
+          ]
+        },
+        {
+          name: 'Life Style',
+          slug: 'life-style',
+          link: '',
+          publishedPosts: []
+        }
       ]
     }
   }
