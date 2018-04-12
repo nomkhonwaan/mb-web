@@ -2,9 +2,9 @@
  * External Dependencies
  */
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes  from 'prop-types';
 import classnames from 'classnames';
-import { omit } from 'lodash';
+import { omit }   from 'lodash';
 
 const Button = (props) => {
   return (

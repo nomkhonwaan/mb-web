@@ -1,14 +1,14 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
+import * as React  from 'react';
 import { shallow } from 'enzyme';
-import { spy } from 'sinon';
+import { spy }     from 'sinon';
 
 /**
  * Internal Dependencies
  */
-import { Header } from './header';
+import { Header }  from './header';
 
 describe('app-header', () => {
 

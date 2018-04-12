@@ -1,20 +1,20 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React       from 'react';
+import { connect }      from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import classnames       from 'classnames';
+import PropTypes        from 'prop-types';
 
 /** 
  * Internal Dependencies
  */
-import routes from '../routes';
-import Header from './header';
-import Footer from './footer';
-import Sidebar from './sidebar';
-import PopupOverlay from './popup-overlay';
+import routes           from '../routes';
+import Header           from './header';
+import Footer           from './footer';
+import Sidebar          from './sidebar';
+import PopupOverlay     from './popup-overlay';
 
 export const App = (props) => {
   return (
