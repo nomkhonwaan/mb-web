@@ -9,6 +9,7 @@ import PropTypes                      from 'prop-types';
 /**
  * Internal Dependencies
  */
+import LatestUpdatedCategories    from './latest-updated-categories';
 import { ArchiveTitle, Button, Post } from '../components';
 import { documentTitle }              from '../utils';
 
@@ -44,17 +45,14 @@ export const RecentPosts = (props) => {
 
       </div>
 
-      <div className="_wide">
-        <ArchiveTitle>
-          Web Development
-        </ArchiveTitle>
-      </div>
-    
-      <div className="_wide">
-        <ArchiveTitle>
-          Life Style
-        </ArchiveTitle>
-      </div>
+      {
+        props.latestUpdatedCategories.map((item, key) => (
+          <LatestUpdatedCategories
+            { ...item }
+            key={ key }
+          />
+        ))
+      }
 
     </div>
   );
@@ -90,7 +88,45 @@ RecentPosts.propTypes = {
           link: PropTypes.string.isRequired
         })
       )
-    })
+    }).isRequired
+  ).isRequired,
+  latestUpdatedCategories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      latestPublishedPosts: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          slug: PropTypes.string,
+          link: PropTypes.string,
+          status: PropTypes.string.isRequired,
+          html: PropTypes.string,
+          author: PropTypes.shape({
+            displayName: PropTypes.string.isRequired,
+            avatarUrl: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired
+          }).isRequired,
+          createdAt: PropTypes.string.isRequired,
+          updatedAt: PropTypes.string,
+          publishedAt: PropTypes.string,
+          tags: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired,
+              slug: PropTypes.string.isRequired,
+              link: PropTypes.string.isRequired
+            })
+          ),
+          categories: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired,
+              slug: PropTypes.string.isRequired,
+              link: PropTypes.string.isRequired
+            })
+          )
+        }).isRequired
+      ).isRequired
+    }).isRequired
   ).isRequired
 };
 
@@ -224,7 +260,7 @@ export default connect(
           name: 'Web Development',
           slug: 'web-development',
           link: '/categories/web-development-5a9a00cb6bcc2335131f9ca7',
-          publishedPosts: [
+          latestPublishedPosts: [
             {
               title: 'เอสเพรสโซวาไรตี้',
               slug: 'เอสเพรสโซวาไรตี้',
@@ -248,6 +284,48 @@ export default connect(
                 {}, {}, {}, {}, {},
                 {}, {}, {}, {}, {}
               ]
+            },
+            {
+              title: 'ลาเต้ละตินเดบิตโมเต็ล เสกสรรค์เทรลเลอร์ซีเนียร์',
+              slug: 'ลาเต้ละตินเดบิตโมเต็ล-เสกสรรค์เทรลเลอร์ซีเนียร์',
+              link: '/2017/12/25/ลาเต้ละตินเดบิตโมเต็ล-เสกสรรค์เทรลเลอร์ซีเนียร์',
+              status: 'PUBLISHED',
+              html: `<p><img src="https://placekitten.com/320/80" /></p>`,
+              author: { 
+                displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
+              },
+              createdAt: '2017-08-15T00:00:00.000Z',
+              publishedAt: '2017-08-15T00:00:00.000Z',
+              tags: [
+                { name: 'Quisque', slug: 'quisque', link: '/tags/quisque' },
+              ],
+              categories: [
+                { name: 'Web Development', slug: 'web-development', link: '/categories/web-development-5a9a00cb6bcc2335131f9ca7' }
+              ],
+              comments: [
+              ]
+            },
+            {
+              title: 'เอสเพรสโซวาไรตี้',
+              slug: 'เอสเพรสโซวาไรตี้',
+              link: '/2017/12/25/เอสเพรสโซวาไรตี้',
+              status: 'PUBLISHED',
+              html: `<p>คาวบอย ป๋าจูเนียร์พ่อค้า ล็อตธุรกรรมบัตเตอร์โยโย่ไลน์ บูติคสปิริต โปรเจ็คท์ เอ็นเตอร์เทน หล่อฮังก้วยเด้อเกรย์ ฮัลโลวีนทริป มหภาคเพียว บุญคุณดีพาร์ทเมนต์ถ่ายทำไพลิน แอคทีฟเยอร์บีร่า ศิลปากรวอล์กไลฟ์ ตะหงิดเวิร์ก...</p>`,
+              author: { 
+                displayName: 'Natcha Luangaroonchai', avatarUrl: 'https://www.gravatar.com/avatar/5b5def6d1c5d9654ace788c71d177473', link: '/users/natcha-luangaroonchai' 
+              },
+              createdAt: '2017-09-19T00:00:00.000Z',
+              publishedAt: '2017-09-19T00:00:00.000Z',
+              tags: [
+                { name: 'Condimentum', slug: 'condimentum', link: '/tags/condimentum' },
+              ],
+              categories: [
+                { name: 'Web Development', slug: 'web-development', link: '/categories/web-development-5a9a00cb6bcc2335131f9ca7' }
+              ],
+              comments: [
+                {}, {}, {}, {}, {},
+                {}, {}
+              ]
             }
           ]
         },
@@ -255,7 +333,8 @@ export default connect(
           name: 'Life Style',
           slug: 'life-style',
           link: '',
-          publishedPosts: []
+          latestPublishedPosts: [
+          ]
         }
       ]
     }
