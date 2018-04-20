@@ -18,15 +18,17 @@ const LatestUpdatedCategories = (props) => {
         { props.name }
       </ArchiveTitle>
 
-      {
-        props.latestPublishedPosts.map((item, key) => (
-          <Post
-            { ...item }
-            key={ key }
-            size="small"
-          />
-        ))
-      }
+      <div className="_flex">
+        {
+          props.latestPublishedPosts.map((item, key) => (
+            <Post
+              { ...item }
+              key={ key }
+              size="small"
+            />
+          ))
+        }
+      </div>
 
     </div>
   )
