@@ -13,6 +13,7 @@ import { ArchiveTitle, Post } from '../components';
 const LatestUpdatedCategories = (props) => {
   return (
     <div className="_wide">
+
       <ArchiveTitle>
         { props.name }
       </ArchiveTitle>
@@ -22,9 +23,11 @@ const LatestUpdatedCategories = (props) => {
           <Post
             { ...item }
             key={ key }
+            size="small"
           />
         ))
       }
+
     </div>
   )
 };

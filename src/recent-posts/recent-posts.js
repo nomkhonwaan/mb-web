@@ -29,6 +29,7 @@ export const RecentPosts = (props) => {
             <Post
               { ...item }
               key={ key }
+              size="medium"
             />
           ))
         }

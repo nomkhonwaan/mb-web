@@ -4,11 +4,12 @@
 import * as React from 'react';
 import { Link }   from 'react-router-dom';
 import PropTypes  from 'prop-types';
+import classnames from 'classnames';
 import moment     from 'moment';
 
 const Post = (props) => {
   return (
-    <div className="post">
+    <div className={ classnames('post', `-${props.size}`) }>
       
       <header className="header">
 
@@ -95,7 +96,7 @@ const Post = (props) => {
 };
 
 Post.propTypes = {
-  isSingle: PropTypes.bool,
+  size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   title: PropTypes.string.isRequired,
   slug: PropTypes.string,
   link: PropTypes.string,
