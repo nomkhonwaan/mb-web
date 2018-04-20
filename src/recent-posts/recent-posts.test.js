@@ -40,6 +40,7 @@ describe('recent-posts', () => {
       const wrapper = shallow(
         <RecentPosts
           latestPublishedPosts={ latestPublishedPosts }
+          latestUpdatedCategories={ [] }
         />
       );
 
