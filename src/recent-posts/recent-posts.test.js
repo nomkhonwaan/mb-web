@@ -45,6 +45,9 @@ describe('recent-posts', () => {
       );
 
       expect(wrapper.find('Post')).toHaveLength(latestPublishedPosts.length);
+      expect(wrapper.find('ArchiveTitle').first().prop('children')).toEqual('Recent Posts');
+      expect(wrapper.find('.older-posts-button')).toHaveLength(1);
+      expect(wrapper.find('LatestUpdatedCategory')).toHaveLength(0);
     });
   });
 

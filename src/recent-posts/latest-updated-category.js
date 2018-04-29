@@ -10,7 +10,7 @@ import PropTypes              from 'prop-types';
  */
 import { ArchiveTitle, Post } from '../components';
 
-const LatestUpdatedCategories = (props) => {
+const LatestUpdatedCategory = (props) => {
   return (
     <div className="_wide">
 
@@ -34,7 +34,7 @@ const LatestUpdatedCategories = (props) => {
   )
 };
 
-LatestUpdatedCategories.propTypes = {
+LatestUpdatedCategory.propTypes = {
   name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
@@ -71,4 +71,4 @@ LatestUpdatedCategories.propTypes = {
   ).isRequired
 };
 
-export default LatestUpdatedCategories;
+export default LatestUpdatedCategory;

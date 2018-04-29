@@ -49,6 +49,6 @@ export default connect(
     return {
       app: state.app,
       ...ownProps
-    }
+    };
   }
 )(App);
