@@ -1,0 +1,25 @@
+@import '../../style.scss';
+
+.archive-title {
+  color: #4d4d4d;
+  display: inline-block;
+  font: normal 400 1.8rem 'Lato', sans-serif;
+  padding: 6.4rem 0 1.6rem;
+  position: relative;
+  text-transform: uppercase;
+
+  @include lg {
+    padding-top: 8.0rem;
+    font-size: 2.2rem;
+  }
+
+  &:after {
+    border-bottom: .1rem solid #808080;
+    bottom: .2rem;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    width: 80%;
+  }
+}

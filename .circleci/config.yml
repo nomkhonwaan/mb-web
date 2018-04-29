@@ -20,7 +20,6 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
     - run: yarn build-css
     - run: yarn build-js
     - persist_to_workspace:
@@ -39,7 +38,6 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
     - run: yarn test
   deploy_to_production:
     docker:
@@ -52,9 +50,8 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
-    - run: yarn firebase use production --token=$FIREBASE_DEPLOY_TOKEN_PRODUCTION
-    - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_PRODUCTION
+    - run: yarn firebase use production --token=$FIREBASE_TOKEN
+    - run: yarn firebase deploy --token=$FIREBASE_TOKEN
   deploy_to_staging:
     docker:
     - image: circleci/node:9.6
@@ -66,9 +63,8 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
-    - run: yarn firebase use staging --token=$FIREBASE_DEPLOY_TOKEN_STAGING
-    - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_STAGING
+    - run: yarn firebase use staging --token=$FIREBASE_TOKEN
+    - run: yarn firebase deploy --token=$FIREBASE_TOKEN
   deploy_to_development:
     docker:
     - image: circleci/node:9.6
@@ -80,9 +76,8 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
-    - run: yarn firebase use development --token=$FIREBASE_DEPLOY_TOKEN_DEVELOPMENT
-    - run: yarn firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_DEVELOPMENT
+    - run: yarn firebase use development --token=$FIREBASE_TOKEN
+    - run: yarn firebase deploy --token=$FIREBASE_TOKEN
 workflows:
   version: 2
   build_test_and_deploy:

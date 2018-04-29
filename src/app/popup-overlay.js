@@ -1,11 +1,11 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { Transition } from 'react-transition-group';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import * as React        from 'react';
+import { connect }       from 'react-redux';
+import { Transition }    from 'react-transition-group';
+import PropTypes         from 'prop-types';
+import classnames        from 'classnames';
 
 /**
  * Internal Dependencies

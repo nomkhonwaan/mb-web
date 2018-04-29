@@ -1,11 +1,11 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
+import * as React        from 'react';
+import { connect }       from 'react-redux';
+import PropTypes         from 'prop-types';
+import { Link }          from 'react-router-dom';
+import classnames        from 'classnames';
 
 /**
  * Internal Dependencies
@@ -16,12 +16,12 @@ export const Sidebar = (props) => {
   const items = [
     { link: '/', name: 'Home' },
     { link: '/login', name: 'Login / Register' },
-    { link: '/categories/web-development', name: 'Web Development' },
-    { link: '/categories/web-design', name: 'Web Design' },
-    { link: '/categories/programming', name: 'Programming' },
-    { link: '/categories/devops', name: 'DevOps' },
-    { link: '/categories/life-style', name: 'Life Style' },
-    { link: '/categories/how-i-made-this-website', name: 'How I made this website' }
+    { link: '/categories/web-development-5a9a00976bcc2335131f9ca6', name: 'Web Development' },
+    { link: '/categories/web-design-5a9a00cb6bcc2335131f9ca7', name: 'Web Design' },
+    { link: '/categories/programming-5a9a00f46bcc2335131f9ca8', name: 'Programming' },
+    { link: '/categories/devops-5a9a010b6bcc2335131f9ca9', name: 'DevOps' },
+    { link: '/categories/life-style-5a9a01156bcc2335131f9caa', name: 'Life Style' },
+    { link: '/categories/how-i-made-this-website-5a9a01226bcc2335131f9cab', name: 'How I made this website' }
   ];
 
   return (
@@ -40,8 +40,7 @@ export const Sidebar = (props) => {
       </div>
 
       <nav>
-        {/* TODO: all nav's items will be actual categories */}
-        <ul className="_list-unstyled _unpadding">
+        <ul className="_list-unstyled _unpadding _unmargin">
           {
             items.map(({ link, name }, key) => (
               <li 
@@ -52,7 +51,7 @@ export const Sidebar = (props) => {
                 onClick={ props.toggleSidebar }
               >
                 <Link to={ link } className="_color-inherit _text-undecorated">
-                  <span>{ name }</span>
+                  { name }
                 </Link>
               </li>
             ))

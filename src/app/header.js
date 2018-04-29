@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as React        from 'react';
+import { connect }       from 'react-redux';
+import PropTypes         from 'prop-types';
 
 /**
  * Internal Dependencies

@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-import * as React from 'react';
-import { shallow } from 'enzyme';
-import { spy } from 'sinon';
+import * as React       from 'react';
+import { shallow }      from 'enzyme';
+import { spy }          from 'sinon';
 
 /**
  * Internal Dependencies

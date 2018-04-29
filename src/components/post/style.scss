@@ -1,0 +1,132 @@
+@import '../../style.scss';
+
+.post {
+  font: normal 400 1.6rem 'Lato', sans-serif;
+
+  & > footer {
+    display: grid;
+    grid-template-columns: 6.4rem auto auto;
+  }
+}
+
+.post-title {
+  color: #333;
+  font: normal 500 2.6rem 'Athiti', sans-serif;
+  margin: 4.8rem 0 .8rem;
+
+  @include lg {
+    font-size: 3.6rem;
+    margin-top: 6.4rem;
+  }
+}
+
+.post-tag {
+  color: #0091ea;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-right: 1.6rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.post-article {
+  color: #333;
+  font: normal 300 1.6rem 'Pridi', sans-serif;
+  margin: 2.4rem 0;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  & > p {
+    margin-top: 2.4rem;
+  }
+
+  & > p > img {
+    border-radius: .4rem;
+    opacity: .8;
+    margin: .8rem 0;
+    max-width: 100%;
+    transition: border-radius .4s, opacity .4s ease-in-out;
+
+    &:hover {
+      border-radius: 0;
+      opacity: 1;
+    }
+  }
+}
+
+.post-author-avatar {
+  grid-row: 1 / span 2;
+
+  & > a > img {
+    border-radius: 50%;
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+}
+
+.post-author-display-name {
+  grid-column: 2 / 3;
+  margin: 0 0 .8rem 1.6rem;
+}
+
+.post-published-at-and-categories {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  margin: .8rem 0 0 1.6rem;
+}
+
+.post-published-at {
+  color: #666;
+}
+
+.post-categories {
+  color: #0091ea;
+}
+
+.post-comments {
+  color: #808080;
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+}
+
+.comment {
+  font-size: 1.5rem;
+
+  > .fa-comments {
+    font-size: 2.2rem;
+    margin-right: .8rem;
+  }
+}
+
+.post {
+  &.-small {
+    width: 32rem;
+    margin: 0 1.6rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .post-title {
+      @include lg {
+        font-size: 2.8rem;
+      }  
+    }
+
+    .post-categories {
+      display: none;
+    }
+  }
+}
