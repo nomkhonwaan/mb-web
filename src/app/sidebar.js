@@ -73,10 +73,9 @@ Sidebar.propTypes = {
 };
 
 export default connect(
-  (state, ownProps) => {
+  (state) => {
     return {
-      router: state.router,
-      ...ownProps
+      router: state.router
     };
   },
   { toggleSidebar }

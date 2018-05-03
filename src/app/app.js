@@ -30,7 +30,11 @@ export const App = (props) => {
 
       { renderRoutes(routes) }
 
-      <Footer />
+      <Footer
+        version="2.0.1"
+        revision="9fce2b7"
+        year="2018"
+      />
 
     </div>
   );
@@ -45,10 +49,9 @@ App.propTypes = {
 }
 
 export default connect(
-  (state, ownProps) => {
+  (state) => {
     return {
-      app: state.app,
-      ...ownProps
+      app: state.app
     };
   }
 )(App);

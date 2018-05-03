@@ -15,7 +15,15 @@ const Post = (props) => {
 
         <Link to={ props.link } className="_text-undecorated">
           {
-            React.createElement(props.isSingle ? 'h1' : 'h2', { className: 'post-title' }, props.title)
+            React.createElement(
+              props.size === 'small' 
+                ? 'h3'
+                : props.size === 'medium'
+                    ? 'h2'
+                    : 'h1', 
+              { className: 'post-title' }, 
+              props.title
+            )
           }
         </Link>
         

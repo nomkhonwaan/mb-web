@@ -1,22 +1,22 @@
 /**
  * External Dependencies
  */
-
-import * as React             from 'react';
-import PropTypes              from 'prop-types';
+import * as React               from 'react';
+import { Link }                 from 'react-router-dom';
+import PropTypes                from 'prop-types';
 
 /**
  * Internal Dependencies
  */
-import { ArchiveTitle, Post } from '../components';
+import { Button, Header, Post } from '../components';
 
 const LatestUpdatedCategory = (props) => {
   return (
-    <div className="_wide">
+    <div className="latest-updated-category _wide">
 
-      <ArchiveTitle>
+      <Header displayStyle="category">
         { props.name }
-      </ArchiveTitle>
+      </Header>
 
       <div className="_flex">
         {
@@ -28,6 +28,16 @@ const LatestUpdatedCategory = (props) => {
             />
           ))
         }
+      </div>
+
+      <div className="_flex">
+      
+        <Button className="older-posts-button _flex-right">
+          <Link to="" className="_color-inherit _text-undecorated">
+            Older Posts
+          </Link>
+        </Button>
+
       </div>
 
     </div>

@@ -11,12 +11,12 @@
 
 .post-title {
   color: #333;
-  font: normal 500 2.6rem 'Athiti', sans-serif;
-  margin: 4.8rem 0 .8rem;
+  font: normal 500 3.2rem 'Athiti', sans-serif;
+  margin: 6.4rem 0 .8rem;
 
   @include lg {
-    font-size: 3.6rem;
-    margin-top: 6.4rem;
+    font-size: 4.8rem;
+    margin-top: 8rem;
   }
 }
 
@@ -108,25 +108,32 @@
 
 .post {
   &.-small {
-    width: 32rem;
-    margin: 0 1.6rem;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
+    width: 100%;
 
     .post-title {
+      font-size: 2.2rem;
+      margin-top: 4.8rem;
+      
       @include lg {
         font-size: 2.8rem;
-      }  
+        margin-top: 6.4rem;
+      }
     }
 
     .post-categories {
       display: none;
+    }
+  }
+
+  &.-medium {
+    .post-title {
+      font-size: 2.6rem;
+      margin-top: 4.8rem;
+      
+      @include lg {
+        font-size: 3.6rem;
+        margin-top: 6.4rem;
+      }
     }
   }
 }

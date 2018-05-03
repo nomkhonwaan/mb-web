@@ -2,4 +2,4 @@
  * Internal Dependencies
  */
 import './style.css';
-export { default } from './archive-title';
+export { default } from './header';

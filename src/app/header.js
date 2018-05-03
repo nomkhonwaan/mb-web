@@ -39,12 +39,11 @@ Header.propTypes = {
 };
 
 export default connect(
-  (state, ownProps) => {
+  (state) => {
     return {
       app: { 
         ...state.app
-      },
-      ...ownProps
+      }
     };
   },
   { toggleSidebar }
