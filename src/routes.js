@@ -1,10 +1,14 @@
 /**
  * Internal Dependencies
  */
-import Archive from './archive';
-import PageNotFound from './page-not-found';
-import RecentPosts from './recent-posts';
-import Single from './single';
+import Archive           from './archive';
+import PageNotFound      from './page-not-found';
+import RecentPosts       from './recent-posts';
+import { 
+  Single, 
+  Editor as SingleEditor 
+}                        from './single';
+
 
 const routes = [
   {
@@ -19,6 +23,10 @@ const routes = [
   {
     path: '/:year/:month/:date/:slug',
     component: Single
+  }, 
+  {
+    path: '/:year/:month/:date/:slug/edit',
+    component: SingleEditor
   },
   {
     path: '*',

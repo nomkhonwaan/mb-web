@@ -1,3 +1,27 @@
+@import '../style.scss';
+
 .older-posts-button {
   margin-top: 6.4rem;
+}
+
+.latest-updated-category {
+  > ._flex {
+    flex-direction: column;
+
+    @include lg {
+      flex-direction: row;
+
+      > .post.-small {
+        margin: 0 1.6rem;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }

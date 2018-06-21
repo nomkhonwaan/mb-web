@@ -12,7 +12,7 @@ import Post        from './post';
 describe('post', () => {
 
   describe('render a Post on the recent-posts page', () => {
-    it('should render a minimal version of Post component', () => {
+    it('should render a medium version of Post component', () => {
       const publishedPost = {
         title: 'ไบโอวิลเลจอุตสาหการ เกจิบาบูนดีไซน์ ต้าอ่วยเจ็ต แอปเปิลสติกเกอร์สเตอริโอมินต์มาร์ก',
         slug: '',
@@ -37,7 +37,7 @@ describe('post', () => {
       };
 
       const wrapper = shallow(
-        <Post { ...publishedPost } />
+        <Post { ...publishedPost } size="medium" />
       );
 
       expect(wrapper.find('h2').text()).toEqual(publishedPost.title);

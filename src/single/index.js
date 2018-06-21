@@ -2,4 +2,5 @@
  * Internal Dependencies
  */
 import './style.css';
-export { default } from './single';
+export { default as Single } from './single';
+export { default as Editor } from './editor';

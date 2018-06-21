@@ -1,3 +1,5 @@
+@import '../style.scss';
+
 @keyframes popup-overlay-fade-in {
   from { opacity: 0; }
   to { opacity: .16; }
@@ -27,6 +29,53 @@
   border-bottom: .1rem solid #ececec;
   grid-column: 2 / 3;
   height: 6.4rem;
+}
+
+.app-footer {
+  grid-column: 2 / 3;
+  margin-top: 6.4rem;
+  overflow: hidden;
+  width: auto;
+
+  @include lg {
+    margin-top: 8rem;
+  }
+
+  > ._flex:first-child > img {
+    opacity: .16;
+    height: 15.3607rem;
+    width: auto;
+
+    @include lg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  > ._flex:last-child {
+    background: #4d4d4d;
+    color: #e6e6e6;
+    font: normal 300 1.6rem 'Lato', sans-serif;
+
+    > ._flex {
+      flex-direction: column;
+
+      @include lg {
+        flex-direction: row;
+      }
+
+      > div {
+        flex-grow: .3;
+        flex-basis: 0;
+        padding: 3.2rem;
+      }
+
+      > div:nth-child(even) {
+        background-color: #333;
+        flex-grow: .4;
+      }
+    }
+  }
 }
 
 .popup-overlay {
@@ -112,4 +161,42 @@
   &.-vertical > a {
     padding: 2.4rem 3.2rem;    
   }
+}
+
+.bird-logo,
+.version-and-revision,
+.copyright,
+.social-network-connection,
+.shortcut > li {
+  margin: 1.6rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.social-network-connection {
+  > a {
+    display: inline-block;
+    margin: 0 .8rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    > *[class*="fa-"] {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+.subscription-form {
 }

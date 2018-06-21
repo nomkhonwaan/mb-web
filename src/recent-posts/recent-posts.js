@@ -1,28 +1,32 @@
 /**
  * External Dependencies
  */
-import * as React                     from 'react';
-import { connect }                    from 'react-redux';
-import { Link }                       from 'react-router-dom';
-import PropTypes                      from 'prop-types';
+import * as React            from 'react';
+import { connect }           from 'react-redux';
+import { Link }              from 'react-router-dom';
+import PropTypes             from 'prop-types';
 
 /**
  * Internal Dependencies
  */
-import LatestUpdatedCategory          from './latest-updated-category';
-import { ArchiveTitle, Button, Post } from '../components';
-import { documentTitle }              from '../utils';
+import LatestUpdatedCategory from './latest-updated-category';
+import { 
+  Button, 
+  Header, 
+  Post, 
+  Title
+}                            from '../components';
 
 export const RecentPosts = (props) => {
   return (
     <div className="recent-posts _flex _flex-direction-column _flex-horizontal-align-center">
 
-      { documentTitle('Recent Posts') }
+      <Title text="Recent Posts" />
       
       <div className="_narrow">
-        <ArchiveTitle>
+        <Header displayStyle="category">
           Recent Posts
-        </ArchiveTitle>
+        </Header>
 
         {
           props.latestPublishedPosts.map((item, key) => (
@@ -132,9 +136,8 @@ RecentPosts.propTypes = {
 };
 
 export default connect(
-  (state, ownProps) => {
+  (state) => {
     return {
-      ...ownProps,
       latestPublishedPosts: state.recentPosts.latestPublishedPosts,
       latestUpdatedCategories: state.recentPosts.latestUpdatedCategories
     };

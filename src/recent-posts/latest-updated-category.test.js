@@ -48,7 +48,7 @@ describe('latest-updated-category', () => {
       />
     );
 
-    expect(wrapper.find('ArchiveTitle').first().prop('children')).toEqual(latestUpdatedCategory.name);
+    expect(wrapper.find('Header').first().prop('children')).toEqual(latestUpdatedCategory.name);
     expect(wrapper.find('Post')).toHaveLength(latestUpdatedCategory.latestPublishedPosts.length);
   });
 });
