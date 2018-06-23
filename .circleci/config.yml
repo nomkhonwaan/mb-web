@@ -7,25 +7,30 @@ jobs:
     steps:
     - checkout
     - run: yarn install
+    - run: yarn build-css
     - save_cache:
         paths:
         - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+        key: node-{{ checksum "package.json" }}
+    - persist_to_workspace:
+        root: ~/repo
+        paths: 
+        - src
   build:
     docker:
     - image: circleci/node:8
     working_directory: ~/repo
     steps:
     - checkout
+    - attach_workspace:
+        at: ~/repo
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-    - run: yarn build-css
+        - node-{{ checksum "package.json" }}
     - run: yarn build-js
     - persist_to_workspace:
         root: ~/repo
         paths: 
-        - src
         - build
   test:
     docker:
@@ -37,7 +42,7 @@ jobs:
         at: ~/repo
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-{{ checksum "package.json" }}
     - run: yarn test
   deploy_to_production:
     docker:
@@ -49,7 +54,7 @@ jobs:
         at: ~/repo
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-{{ checksum "package.json" }}
     - run: yarn firebase use production --token=$FIREBASE_TOKEN
     - run: yarn firebase deploy --token=$FIREBASE_TOKEN
   deploy_to_staging:
@@ -62,7 +67,7 @@ jobs:
         at: ~/repo
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-{{ checksum "package.json" }}
     - run: yarn firebase use staging --token=$FIREBASE_TOKEN
     - run: yarn firebase deploy --token=$FIREBASE_TOKEN
   deploy_to_development:
@@ -75,7 +80,7 @@ jobs:
         at: ~/repo
     - restore_cache:
         keys:
-        - v1-dependencies-{{ checksum "package.json" }}
+        - node-{{ checksum "package.json" }}
     - run: yarn firebase use development --token=$FIREBASE_TOKEN
     - run: yarn firebase deploy --token=$FIREBASE_TOKEN
 workflows:
@@ -83,12 +88,12 @@ workflows:
   build_test_and_deploy:
     jobs:
     - install
-    - build:
-        requires:
-        - install
     - test:
         requires: 
-        - build
+        - install
+    - build:
+        requires:
+        - test
     - hold:
         type: approval
         filters:
@@ -97,20 +102,20 @@ workflows:
             - master
     - deploy_to_production:
         requires:
-        - test
+        - build
         - hold
         filters:
           branches:
             only: master
     - deploy_to_staging:
         requires:
-        - test
+        - build
         filters:
           branches:
             only: master
     - deploy_to_development:
         requires:
-        - test
+        - build
         filters:
           branches:
             ignore: master
