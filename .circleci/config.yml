@@ -102,20 +102,20 @@ workflows:
             - master
     - deploy_to_production:
         requires:
-        - test
+        - build
         - hold
         filters:
           branches:
             only: master
     - deploy_to_staging:
         requires:
-        - test
+        - build
         filters:
           branches:
             only: master
     - deploy_to_development:
         requires:
-        - test
+        - build
         filters:
           branches:
             ignore: master
