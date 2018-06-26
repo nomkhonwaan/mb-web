@@ -100,6 +100,18 @@ workflows:
           branches:
             only:
             - master
+    - deploy_to_development:
+        requires:
+        - build
+        filters:
+          branches:
+            ignore: master
+    - deploy_to_staging:
+        requires:
+        - build
+        filters:
+          branches:
+            only: master
     - deploy_to_production:
         requires:
         - build
@@ -107,15 +119,3 @@ workflows:
         filters:
           branches:
             only: master
-    - deploy_to_staging:
-        requires:
-        - build
-        filters:
-          branches:
-            only: master
-    - deploy_to_development:
-        requires:
-        - build
-        filters:
-          branches:
-            ignore: master
