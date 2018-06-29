@@ -28,16 +28,16 @@ const Post = (props) => {
         </Link>
         
         {
-          props.tags.map((item, key) =>
-            <span
-              className="post-tag"
-              key={ key }
-            >
-              <Link to={ item.link } className="_color-inherit _text-undecorated">
-                #{ item.name }
-              </Link>
-            </span> 
-          )
+          props.relationships.tags.map((item, key) => (
+              <span
+                className="post-tag"
+                key={ key }
+              >
+                <Link to={ item.link } className="_color-inherit _text-undecorated">
+                  #{ item.name }
+                </Link>
+              </span> 
+            ))
         }
         
       </header>

@@ -1,30 +1,30 @@
 /**
  * External Dependencies
  */
-import { compose, combineReducers, createStore, applyMiddleware } from 'redux';
-import { routerReducer, routerMiddleware }                        from 'react-router-redux';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { routerMiddleware }                      from 'react-router-redux';
+import { createEpicMiddleware }                  from 'redux-observable';
 
 /** 
  * Internal Dependencies
  */
-import app                                                        from './modules/app';
-import recentPosts                                                from './modules/recent-posts';
+import { rootEpic, rootReducer }                 from './modules/root';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const epicMiddleware = createEpicMiddleware();
 
 function configureStore(history) {
   const store = createStore(
-    combineReducers({
-      app,
-      recentPosts,
-      router: routerReducer
-    }),
+    rootReducer,
     composeEnhancers(
       applyMiddleware(
+        epicMiddleware,
         routerMiddleware(history)
       )
     )
   );
+
+  epicMiddleware.run(rootEpic);
 
   return store;
 }
