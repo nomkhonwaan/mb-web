@@ -10,7 +10,7 @@ import PropTypes                       from 'prop-types';
 /**
  * Internal Dependencies
  */
-import LatestUpdatedCategory           from './latest-updated-category';
+// import LatestUpdatedCategory           from './latest-updated-category';
 import { Button, Header, Post, Title } from '../components';
 import { fetchLatestPublishedPosts }   from '../redux/modules/recent-posts';
 
