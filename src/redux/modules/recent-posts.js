@@ -41,7 +41,10 @@ export const fetchLatestPublishedPostsEpic = (action$) => {
   );
 };
 
-const initialState = require('./recent-posts.json');
+const initialState = {
+  latestPublishedPosts: {},
+  latestUpdatedCategories: {}
+}
 
 function recentPosts(state = initialState, action) {
   switch (action.type) {
@@ -49,32 +52,40 @@ function recentPosts(state = initialState, action) {
     case FETCH_LATEST_PUBLISHED_POSTS_FULLFILLED:
       return update(state, {
         latestPublishedPosts: {
-          $set: action.payload.response.data.map((item) => {
-            return update(item, {
-              relationships: {
-                $set: _.reduce(item.relationships, (result, item, key) => {
-                  const findIncludedItem = (id) => {
-                    return _.find(action.payload.response.included, ['id', id]);
-                  };
-
-                  if (Array.isArray(item.data)) {
-                    return update(result, {
-                      $merge: {
-                        [key]: item.data.map((item) => {
-                          return findIncludedItem(item.id);
-                        })
+          $set: update(action.payload.response, {
+            data: {
+              $set: action.payload.response.data.map((item) => {
+                return update(item, {
+                  relationships: {
+                    $set: _.reduce(item.relationships, (result, item, key) => {
+                      const findIncludedItem = (id) => {
+                        return _.find(action.payload.response.included, ['id', id]);
+                      };
+  
+                      if (Array.isArray(item.data)) {
+                        return update(result, {
+                          $merge: {
+                            [key]: {
+                              data: item.data.map((item) => {
+                                return findIncludedItem(item.id);
+                              })
+                            }
+                          }
+                        });
+                      } else {
+                        return update(result, {
+                          $merge: {
+                            [key]: {
+                              data: findIncludedItem(item.data.id)
+                            }
+                          }
+                        });
                       }
-                    });
-                  } else {
-                    return update(result, {
-                      $merge: {
-                        [key]: findIncludedItem(item.data.id)
-                      }
-                    });
+                    }, {})
                   }
-                }, {})
-              }
-            })
+                })
+              })
+            }
           })
         }
       });

@@ -1,6 +1,7 @@
 /**
  * External Dependencies
  */
+import _          from 'lodash';
 import * as React from 'react';
 import { Link }   from 'react-router-dom';
 import PropTypes  from 'prop-types';
@@ -8,12 +9,14 @@ import classnames from 'classnames';
 import moment     from 'moment';
 
 const Post = (props) => {
+  const publishedAt = moment(props.attributes.publishedAt);
+
   return (
     <div className={ classnames('post', `-${props.size}`) }>
       
       <header className="header">
 
-        <Link to={ props.link } className="_text-undecorated">
+        <Link to={ `/${publishedAt.format('YYYY/MM/DD')}/${props.attributes.slug}` } className="_text-undecorated">
           {
             React.createElement(
               props.size === 'small' 
@@ -22,66 +25,73 @@ const Post = (props) => {
                     ? 'h2'
                     : 'h1', 
               { className: 'post-title' }, 
-              props.title
+              props.attributes.title
             )
           }
         </Link>
         
         {
-          props.relationships.tags.map((item, key) => (
-              <span
-                className="post-tag"
-                key={ key }
-              >
-                <Link to={ item.link } className="_color-inherit _text-undecorated">
-                  #{ item.name }
-                </Link>
-              </span> 
-            ))
+          _.isEmpty(props.relationships.tags.data) ? null : props.relationships.tags.data
+            .map(
+              (item, key) => (
+                  <span
+                    className="post-tag"
+                    key={ key }
+                  >
+                    <Link to={ `/tags/${item.attributes.slug}` } className="_color-inherit _text-undecorated">
+                      #{ item.attributes.name }
+                    </Link>
+                </span> 
+              )
+            )          
         }
         
       </header>
 
       <article
         className="post-article"
-        dangerouslySetInnerHTML={ { __html: props.html } }>
+        dangerouslySetInnerHTML={ { __html: _.truncate(props.attributes.html, { length: 512 }) } }>
       </article>
 
       <footer className="footer">
 
         <div className="post-author-avatar">
-          <Link to={ props.author.link } className="_color-inherit _text-undecorated">
-            <img src={ props.author.avatarUrl } alt={ props.author.displayName } />
+          <Link to={ `/users/${props.relationships.author.data.id}` } className="_color-inherit _text-undecorated">
+            <img src={ props.relationships.author.data.attributes.avatarUrl } alt={ props.relationships.author.data.attributes.displayName } />
           </Link>
         </div>
 
         <div className="post-author-display-name _flex _flex-vertical-align-bottom">
-          <Link to={ props.author.link } className="_color-inherit _text-undecorated">
-            { props.author.displayName }
+          <Link to={ `/users/${props.relationships.author.data.id}` } className="_color-inherit _text-undecorated">
+            { props.relationships.author.data.attributes.displayName }
           </Link>
         </div>
         
         <div className="post-published-at-and-categories">
 
           <span className="post-published-at">
-            { moment(props.publishedAt).format('MMMM DD, YYYY') }
+            { publishedAt.format('MMMM DD, YYYY') }
           </span>
 
           &nbsp;on&nbsp;
 
           <span className="post-categories">
             {
-              props.categories
-                .map((item, key) => (
-                  <Link 
-                    to={ item.link } 
-                    className="_color-inherit _text-undecorated"
-                    key={ key }
-                  >
-                    { item.name }
-                  </Link>
-                ))
-                .reduce((result, item) => [result, ', ', item])
+              _.isEmpty(props.relationships.categories.data) ? null : props.relationships.categories.data
+                .map(
+                  (item, key) => (
+                    <Link 
+                      to={ `/categories/${item.attributes.slug}` } 
+                      className="_color-inherit _text-undecorated"
+                      key={ key }
+                    >
+                      { item.name }
+                    </Link>
+                  )
+                )
+                .reduce(
+                  (result, item) => [result, ', ', item]
+                )
             }
           </span>
 
@@ -89,9 +99,9 @@ const Post = (props) => {
 
         <div className="post-comments _flex _flex-vertical-align-middle _flex-horizontal-align-right">
           {
-            !props.comments.length ? null : (
+            _.isEmpty(props.relationships.comments.data) ? null : (
               <div className="comment _flex _flex-vertical-align-middle">
-                <i className="fal fa-comments" /> { props.comments.length }
+                <i className="fal fa-comments" /> { props.relationships.comments.data.length }
               </div> 
             )
           }
@@ -105,33 +115,48 @@ const Post = (props) => {
 
 Post.propTypes = {
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string,
-  link: PropTypes.string,
-  status: PropTypes.string.isRequired,
-  html: PropTypes.string,
-  author: PropTypes.shape({
-    displayName: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  links: PropTypes.shape({
+    self: PropTypes.string.isRequired
   }).isRequired,
-  createdAt: PropTypes.string.isRequired,
-  updatedAt: PropTypes.string,
-  publishedAt: PropTypes.string,
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired
-    })
-  ),
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired
-    })
-  )
+  attributes: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    publishedAt: PropTypes.string,
+    status: PropTypes.oneOf([ 'DRAFT', 'PUBLISHED' ]).isRequired,
+    html: PropTypes.string.isRequired,
+    markdown: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string
+  }).isRequired,
+  relationships: PropTypes.shape({
+    author: PropTypes.shape({
+      data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        attributes: PropTypes.shape({
+          avatarUrl: PropTypes.string.isRequired,
+          displayName: PropTypes.string.isRequired
+        }).isRequired,
+        links: PropTypes.shape({
+          self: PropTypes.string.isRequired
+        }).isRequired
+      }).isRequired
+    }).isRequired,
+    tags: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          attributes: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired
+          }).isRequired,
+          links: PropTypes.shape({
+            self: PropTypes.string.isRequired
+          }).isRequired
+        })
+      ).isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default Post;
