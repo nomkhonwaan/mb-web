@@ -22,8 +22,8 @@ const Footer = (props) => {
         <div className="_flex _wide">
 
           <div>
-            <div className="bird-logo">
-              <img alt="nomkhonwaan.com" src="/static/bird-logo.svg" />
+            <div className="logo">
+              <img alt="nomkhonwaan.com" src="/static/logo.svg" />
             </div>
 
             <div className="version-and-revision">v{ props.version } · { props.revision }</div>

@@ -19,7 +19,7 @@ describe('app-footer', () => {
     />);
 
     expect(wrapper.find('img[src="/static/cityscape.svg"]')).toHaveLength(1);
-    expect(wrapper.find('img[src="/static/bird-logo.svg"]')).toHaveLength(1);
+    expect(wrapper.find('img[src="/static/logo.svg"]')).toHaveLength(1);
     expect(wrapper.find('.version-and-revision').text()).toBe('v0.0.1 · dev');
     expect(wrapper.find('.copyright').text()).toBe('www.nomkhonwaan.com © 2018');
       
