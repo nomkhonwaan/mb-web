@@ -16,7 +16,7 @@ jobs:
         root: ~/repo
         paths: 
         - src
-  build:
+  build_for_development:
     docker:
     - image: circleci/node:8
     working_directory: ~/repo
@@ -27,6 +27,28 @@ jobs:
     - restore_cache:
         keys:
         - node-{{ checksum "package.json" }}
+    - run: |
+          echo 'export REACT_APP_API_URL=$API_URL_DEVELOPMENT' >> $BASH_ENV
+          source $BASH_ENV
+    - run: yarn build-js
+    - persist_to_workspace:
+        root: ~/repo
+        paths: 
+        - build
+  build_for_staging_and_production:
+    docker:
+    - image: circleci/node:8
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - attach_workspace:
+        at: ~/repo
+    - restore_cache:
+        keys:
+        - node-{{ checksum "package.json" }}
+    - run: |
+        echo 'export REACT_APP_API_URL=$API_URL_PRODUCTION' >> $BASH_ENV
+        source $BASH_ENV
     - run: yarn build-js
     - persist_to_workspace:
         root: ~/repo
@@ -91,9 +113,18 @@ workflows:
     - test:
         requires: 
         - install
-    - build:
+    - build_for_development:
         requires:
         - test
+        filters:
+          branches:
+            ignore: master
+    - build_for_staging_and_production:
+        requires:
+        - test
+        filters:
+          branches:
+            only: master
     - hold:
         type: approval
         filters:
@@ -102,19 +133,19 @@ workflows:
             - master
     - deploy_to_development:
         requires:
-        - build
+        - build_for_development
         filters:
           branches:
             ignore: master
     - deploy_to_staging:
         requires:
-        - build
+        - build_for_staging_and_production
         filters:
           branches:
             only: master
     - deploy_to_production:
         requires:
-        - build
+        - build_for_staging_and_production
         - hold
         filters:
           branches:
