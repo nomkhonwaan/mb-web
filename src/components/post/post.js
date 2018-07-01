@@ -85,7 +85,7 @@ const Post = (props) => {
                       className="_color-inherit _text-undecorated"
                       key={ key }
                     >
-                      { item.name }
+                      { item.attributes.name }
                     </Link>
                   )
                 )

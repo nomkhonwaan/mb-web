@@ -20,11 +20,23 @@ export class RecentPosts extends React.Component {
     this.props.fetchLatestPublishedPosts();
   }
 
-  render() {
-    if (_.isEmpty(this.props.latestPublishedPosts)) {
-      return 'Loading...';
-    }
+  renderLoadingAnimation() {
+    return 'Loading...';
+  }
 
+  renderRecentPosts() {
+    return this.props.latestPublishedPosts.data.map(
+      (item, key) => (
+        <Post
+          { ...item }
+          key={ key }
+          size="medium"
+        />
+      )
+    );
+  }
+
+  render() {
     return (
       <div className="recent-posts _flex _flex-direction-column _flex-horizontal-align-center">
 
@@ -34,21 +46,15 @@ export class RecentPosts extends React.Component {
           <Header displayStyle="category">
             Recent Posts
           </Header>
-  
+
           {
-              _.isEmpty(this.props.latestPublishedPosts) ? null : this.props.latestPublishedPosts.data.map(
-              (item, key) => (
-                <Post
-                  { ...item }
-                  key={ key }
-                  size="medium"
-                />
-              )
-            )
+            _.isEmpty(this.props.latestPublishedPosts) 
+              ? this.renderLoadingAnimation() 
+              : this.renderRecentPosts()
           }
-  
+          
           <div className="_flex">
-  
+
             <Button className="older-posts-button _flex-right">
               <Link to="" className="_color-inherit _text-undecorated">
                 Older Posts
@@ -56,7 +62,6 @@ export class RecentPosts extends React.Component {
             </Button>
             
           </div>
-  
         </div>
   
         {/* {
