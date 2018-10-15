@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.nomkhonwaan.mb",
+    "sha256_cert_fingerprints":
+    ["8F:41:0C:96:58:17:79:14:1E:80:3C:9C:ED:AF:9A:32:EA:CE:8E:F5:D4:B3:74:33:A4:46:B7:60:77:29:70:31"]
+  }
+}]
